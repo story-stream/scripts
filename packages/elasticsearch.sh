@@ -10,7 +10,7 @@
 # * ELASTICSEARCH_VERSION
 # * ELASTICSEARCH_PORT
 #
-ELASTICSEARCH_VERSION=${ELASTICSEARCH_VERSION:="2.3.4"}
+ELASTICSEARCH_VERSION=${ELASTICSEARCH_VERSION:="2.3"}
 ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT:="9333"}
 ELASTICSEARCH_DIR=${ELASTICSEARCH_DIR:="$HOME/el"}
 ELASTICSEARCH_WAIT_TIME=${ELASTICSEARCH_WAIT_TIME:="30"}
@@ -31,7 +31,7 @@ wget --continue --output-document "${CACHED_DOWNLOAD}" "${ELASTICSEARCH_DL_URL}"
 tar -xaf "${CACHED_DOWNLOAD}" --strip-components=1 --directory "${ELASTICSEARCH_DIR}"
 
 echo "http.port: ${ELASTICSEARCH_PORT}" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
-echo "path.repo: /usr/share/elasticsearch/backup" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
+echo "path.repo: [\"/usr/share/elasticsearch/backup\"]" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
 echo "script.inline: sandbox" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
 echo "script.engine.groovy.inline.update: on" >> ${ELASTICSEARCH_DIR}/config/elasticsearch.yml
 
